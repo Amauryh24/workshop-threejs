@@ -6,7 +6,7 @@ Introduction about Three.js
 
 - Clone the repository
 
-- you can use "Live Server" plugin of VSC to run the index.html
+- You can use "Live Server" plugin of VSC to run the index.html
 
 ## Objectives
 

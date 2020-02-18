@@ -16,5 +16,5 @@ Introduction about Three.js
 
 ### Documentations
 
-- [official documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
+- [Official documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
 - [Load Free 3D Model](https://sketchfab.com/feed)

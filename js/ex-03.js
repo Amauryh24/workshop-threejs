@@ -5,7 +5,13 @@ let scene,
 
 function init() {
   // instance scene & perspective camera
-
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(
+    60,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
   // ---------------------------------------
   camera.position.z = 1;
   camera.rotation.x = 1.16;
@@ -13,7 +19,8 @@ function init() {
   camera.rotation.z = 0.27;
 
   // add ambient light into the scene with color : 0x555555
-
+  let ambient = new THREE.AmbientLight(0x555555);
+  scene.add(ambient);
   // ---------------------------------------
 
   let directionalLight = new THREE.DirectionalLight(0xff8c19);
@@ -31,7 +38,9 @@ function init() {
   scene.add(blueLight);
 
   // instance renderer
-
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
   // ---------------------------------------
   scene.fog = new THREE.FogExp2(0x03544e, 0.001);
   renderer.setClearColor(scene.fog.color);
@@ -43,9 +52,8 @@ function init() {
       map: texture,
       transparent: true
     });
-
-    // put all this instruction in loop with p at 0 to 70
-    /*let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
+    for (let p = 0; p < 70; p++) {
+      let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
       cloud.position.set(
         Math.random() * 800 - 400,
         500,
@@ -56,8 +64,8 @@ function init() {
       cloud.rotation.z = Math.random() * 2 * Math.PI;
       cloud.material.opacity = 0.55;
       cloudParticles.push(cloud);
-      scene.add(cloud);*/
-    // -------------------------------------------------
+      scene.add(cloud);
+    }
   });
   loader.load("../assets/img/stars.jpg", function(texture) {
     const textureEffect = new POSTPROCESSING.TextureEffect({
@@ -106,5 +114,5 @@ function render() {
 }
 
 // call function init :)
-
+init();
 // ---------------------
